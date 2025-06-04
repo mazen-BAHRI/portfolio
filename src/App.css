@@ -1,0 +1,125 @@
+/* ===== VARIABLES ===== */
+:root {
+  --primary: #2B2D42;
+  --secondary: #EDF2F4;
+  --accent: #EF233C;
+  --transition: all 0.3s ease-out;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background: var(--primary);
+  padding: 1.5rem 2rem;
+}
+
+.navbar__list {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar__link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+/* Underline Animation */
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: var(--accent);
+  transition: var(--transition);
+}
+
+.navbar__link:hover::after,
+.navbar__link--active::after {
+  width: 100%;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--accent);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  --hero-padding: 2rem;
+  --cta-shadow: 0 10px 20px rgba(239, 35, 60, 0.3);
+
+  display: grid;
+  place-content: center;
+  min-height: 90vh;
+  padding: var(--hero-padding);
+  background-color: var(--primary);
+  color: var(--secondary);
+  position: relative;
+  isolation: isolate; /* Creates new stacking context */
+}
+
+.hero__content {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.2;
+  margin-block-end: 1.5rem;
+}
+
+.hero__title > span {
+  color: var(--accent);
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 60ch;
+  margin-block-end: 2rem;
+  opacity: 0.9;
+}
+
+/* CTA Link Styles */
+.hero__cta {
+  --cta-bg: var(--accent);
+  --cta-text: var(--secondary);
+
+  display: inline-flex;
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  padding: 0.8rem 2rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 
+    transform 200ms ease-out,
+    box-shadow 200ms ease-out;
+  will-change: transform;
+}
+
+.hero__cta:is(:hover, :focus-visible) {
+  transform: translateY(-0.1875rem);
+  box-shadow: var(--cta-shadow);
+}
+
+/* Decorative Elements */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 75% 50%,
+    rgba(239, 35, 60, 0.15) 0%,
+    transparent 60%
+  );
+  z-index: -1;
+}
